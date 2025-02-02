@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6e7dff, #32c5ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      flex-direction: column;
+    }
+
+    .school-name {
+      font-size: 36px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+      margin: 0 15px; /* Добавлено для заполнения пустоты по бокам */
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #32c5ff;
+      box-shadow: 0 0 8px rgba(50, 197, 255, 0.5);
+    }
+
+    button {
+      background-color: #32c5ff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218db2;
+    }
+
+    .message {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .auth-link {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 16px;
+    }
+
+    .auth-link a {
+      color: #000;
+      font-weight: 600;
+    }
+
+    .auth-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="school-name">Our School Name</div>
+<div class="container">
+  <h2>Registration</h2>
+  <form action="register.php" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <select name="role" required>
+      <option value="" disabled selected>Select Role</option>
+      <option value="teacher">Teacher</option>
+      <option value="student">Student</option>
+    </select>
+    <button type="submit">Register</button>
+  </form>
+  <div class="message" id="message"></div>
+
+  <!-- Ссылка на страницу авторизации -->
+  <div class="auth-link">
+    <a href="login.html">Login here</a>
+  </div>
+</div>
+</body>
+</html>
