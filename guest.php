@@ -1,0 +1,243 @@
+<?php
+session_start();
+if (isset($_SESSION['user'])) {
+    header("Location: dashboard.php"); // Если пользователь авторизован, отправляем на его страницу
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Learning Platform</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.scss" rel="stylesheet">
+</head>
+<body>
+<style>
+
+    /* Кнопка Sign Up */
+    .btn-signup {
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        background: #ffffff;
+        color: #5e60ce;
+        font-weight: bold;
+        border-radius: 5px;
+        border: 2px solid #5e60ce;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-signup:hover {
+        background: #5e60ce;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Общий фон */
+    body {
+        background-color: #f4f4f8;
+    }
+
+    /* Навигация */
+    .navbar {
+        background: #5e60ce;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .btn-outline-light {
+        border-color: white;
+    }
+
+    /* Хедер */
+    .hero {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .hero .btn {
+        background: #ffffff;
+        color: #6a11cb;
+        font-weight: bold;
+    }
+
+    .hero .btn:hover {
+        background: #5e60ce;
+        color: white;
+    }
+
+    /* Категории */
+    .categories-section {
+        padding: 50px 0;
+    }
+
+    .category-card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+    }
+
+    .category-card a {
+        text-decoration: none;
+        color: #5e60ce;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .category-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* About Us */
+    .about-section {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        padding: 60px 0;
+    }
+
+    .about-card {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Contact */
+    .contact-section {
+        background: #ffffff;
+        padding: 60px 0;
+    }
+
+    .contact-form {
+        max-width: 500px;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    /* Кнопки */
+    .btn-custom {
+        padding: 12px 20px;
+        font-size: 1.1rem;
+        background: #5e60ce;
+        color: white;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background: #4b0082;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Футер */
+    .footer {
+        background: #4b0082;
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">LearnMatch</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item"><a class="btn btn-outline-light ms-2 btn-custom" href="profile.html">Profile</a></li>
+                <li class="nav-item"><a class="btn btn-signup ms-2" href="login.php">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Хедер -->
+<header class="hero">
+    <div class="container">
+        <h1>Find the Best Teachers for Any Subject</h1>
+        <p>Connect with qualified educators and start your learning journey today.</p>
+        <a href="#categories" class="btn btn-light btn-lg btn-custom">Explore Categories</a>
+    </div>
+</header>
+
+<!-- Категории -->
+<section id="categories" class="categories-section">
+    <div class="container text-center">
+        <h2 class="mb-4 text-primary">Explore Categories</h2>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 mb-4"><div class="category-card"><a href="category-math.html">Math</a></div></div>
+            <div class="col-sm-6 col-md-4 mb-4"><div class="category-card"><a href="category-science.html">Science</a></div></div>
+            <div class="col-sm-6 col-md-4 mb-4"><div class="category-card"><a href="category-languages.html">Languages</a></div></div>
+            <div class="col-sm-6 col-md-4 mb-4"><div class="category-card"><a href="category-programming.html">Programming</a></div></div>
+            <div class="col-sm-6 col-md-4 mb-4"><div class="category-card"><a href="category-music.html">Music</a></div></div>
+            <div class="col-sm-6 col-md-4 mb-4"><div class="category-card"><a href="category-arts.html">Arts</a></div></div>
+        </div>
+    </div>
+</section>
+<!-- О нас -->
+<section id="about" class="about-section py-5">
+    <div class="container text-center">
+        <h2 class="mb-4 text-white">About Us</h2>
+        <div class="about-card mx-auto p-4">
+            <p class="lead">We connect students with top educators to make learning accessible and effective. Our platform offers a diverse range of subjects and expert tutors to help you succeed.</p>
+            <p>Join thousands of learners who are mastering new skills every day.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Контакты -->
+<section id="contact" class="contact-section py-5">
+    <div class="container text-center">
+        <h2 class="mb-4 text-primary">Contact Us</h2>
+        <p class="lead">Have questions? Reach out to us!</p>
+        <div class="contact-form mx-auto">
+            <form>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-custom">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <p>&copy; 2025 LearnMatch. All rights reserved.</p>
+</footer>
+
+<!-- Скрипты -->
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
